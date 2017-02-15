@@ -1,38 +1,38 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>My Games</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <h1>Games List</h1>
-  <button ion-button>
+  <button ion-button (click)="addGame()">
     <ion-icon name="add"></ion-icon>
     Add New Game
   </button>
-  <ion-list>
-    <ion-item-sliding>
-  <ion-item *ngFor="let game of games | async">
-    <ion-row>
-      <ion-col>
-      {{game.name}}
-      </ion-col>
-      <ion-col>
-      {{game.cost}}
-      </ion-col>
-      <ion-col>
-      {{game.rating}}
-      </ion-col>
-    </ion-row>
-  </ion-item>
-  <ion-item-options>
-      <button ion-button color="primary" icon-left>
+  <ion-list inset>
+    <ion-item-sliding *ngFor="let game of games | async">
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            {{game.name}}
+          </ion-col>
+          <ion-col>
+            {{game.cost}}
+          </ion-col>
+          <ion-col>
+            {{game.rating}}
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
         <ion-icon name="build" ></ion-icon>
         Edit</button>
-      <button ion-button color="danger" icon-left>
+        <button ion-button color="danger" (click)="deleteGame(game)">
         <ion-icon name="trash"></ion-icon>
         Delete</button>
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
